@@ -1,0 +1,30 @@
+<div>
+  <label>
+    <input class="form-control" type="text" placeholder="Please enter your tracking code"
+      ng-model="c.data.tracking_code">
+  </label>
+  <button class="btn btn-primary" ng-click="c.submitCode()">Submit</button>
+  <div class="panel" ng-switch="c.data.shipments">
+
+    <h2>
+      You have the following shipments
+    </h2>
+    <ul class="list-group" ng-repeat="shipment in c.data.shipments">
+      <div ng-click="c.toggleTrackingEvents(shipment)" class="list-group-item" id="{{shipment.sys_id}}">
+        {{shipment.u_id}}
+        {{shipment.u_origin}}
+        {{ shipment.u_destination }}
+        {{ shipment.u_status_code }}
+      </div>
+
+      <div class="tracking-events" ng-show="shipment.show_events">
+
+        <ul ng-repeat="e in shipment.tracking_events" class="list-group">
+          <li class="list-group-item"><span>{{e.u_timestamp}}</span> <span>{{ e.u_status}}</span></li>
+        </ul>
+      </div>
+    </ul>
+  </div>
+
+
+</div>

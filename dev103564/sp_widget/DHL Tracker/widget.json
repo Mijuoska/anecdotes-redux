@@ -1,0 +1,418 @@
+{
+    "instance": {
+        "name": "dev103564",
+        "url": "https://dev103564.service-now.com",
+        "g_ck": "f04e40ff2f5b10109a34206df699b6deac4e92b7b8bb05baf6f9923f816601cb5b71155a"
+    },
+    "action": "saveWidget",
+    "tableName": "sp_widget",
+    "name": "DHL Tracker",
+    "sys_id": "60d9df932f1310109a34206df699b66b",
+    "widget": {
+        "template": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Body HTML template",
+            "sys_readonly": false,
+            "type": "html_template",
+            "mandatory": false,
+            "displayValue": "<div>\n    <label>\n  <input class=\"form-control\" type=\"text\" placeholder=\"Please enter your tracking code\" ng-model=\"c.data.tracking_code\">\n   </label>\n      <button class=\"btn btn-primary\" ng-click=\"c.submitCode()\">Submit</button>\n<div ng-switch=\"c.data.shipments\">\n \n  <h2>\n    You have the following shipments\n  </h2>\n  <div class=\"list-group hide-x-overflow\" ng-repeat=\"s in c.data.shipments\">\n<div class=\"list-group-item\" id=\"shipment\"><span>{{s.u_id}}</span> \n  <span>{{s.u_origin}}</span> \n  <span>{{ s.u_destination }}</span> \n  <span> {{ s.u_status_code }}</span>\n  </div>\n    </div>\n    </div>\n\n  \n</div>",
+            "readonly": false,
+            "hint": "",
+            "name": "template",
+            "attributes": {},
+            "choice": 0,
+            "value": "<div>\n    <label>\n  <input class=\"form-control\" type=\"text\" placeholder=\"Please enter your tracking code\" ng-model=\"c.data.tracking_code\">\n   </label>\n      <button class=\"btn btn-primary\" ng-click=\"c.submitCode()\">Submit</button>\n<div ng-switch=\"c.data.shipments\">\n \n  <h2>\n    You have the following shipments\n  </h2>\n  <div class=\"list-group hide-x-overflow\" ng-repeat=\"s in c.data.shipments\">\n<div class=\"list-group-item\" id=\"shipment\"><span>{{s.u_id}}</span> \n  <span>{{s.u_origin}}</span> \n  <span>{{ s.u_destination }}</span> \n  <span> {{ s.u_status_code }}</span>\n  </div>\n    </div>\n    </div>\n\n  \n</div>",
+            "max_length": 65000,
+            "ed": {
+                "name": "template"
+            }
+        },
+        "css": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "CSS",
+            "sys_readonly": false,
+            "type": "css",
+            "mandatory": false,
+            "displayValue": "",
+            "readonly": false,
+            "hint": "",
+            "name": "css",
+            "attributes": {},
+            "choice": 0,
+            "value": "",
+            "max_length": 8000,
+            "ed": {
+                "name": "css"
+            }
+        },
+        "roles": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": 12,
+            "label": "Roles",
+            "sys_readonly": false,
+            "type": "user_roles",
+            "mandatory": false,
+            "displayValue": "",
+            "readonly": false,
+            "hint": "",
+            "name": "roles",
+            "attributes": {
+                "no_truncate": "true",
+                "update_exempt": "true",
+                "record_watcher_blacklist": "true"
+            },
+            "choice": 0,
+            "value": "",
+            "max_length": 255,
+            "ed": {
+                "name": "roles"
+            }
+        },
+        "link": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Link",
+            "sys_readonly": false,
+            "type": "script",
+            "mandatory": false,
+            "displayValue": "function link(scope, element, attrs, controller) {\r  \r}",
+            "readonly": false,
+            "hint": "",
+            "name": "link",
+            "attributes": {
+                "client_script": "true"
+            },
+            "choice": 0,
+            "value": "function link(scope, element, attrs, controller) {\r  \r}",
+            "max_length": 65000,
+            "ed": {
+                "name": "link"
+            }
+        },
+        "description": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Description",
+            "sys_readonly": false,
+            "type": "string",
+            "mandatory": false,
+            "displayValue": "",
+            "readonly": false,
+            "hint": "Defines what the widget does",
+            "name": "description",
+            "attributes": {
+                "edge_encryption_enabled": "true"
+            },
+            "choice": 0,
+            "value": "",
+            "max_length": 300,
+            "ed": {
+                "name": "description"
+            }
+        },
+        "demo_data": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Demo data",
+            "sys_readonly": false,
+            "type": "json",
+            "mandatory": false,
+            "displayValue": "",
+            "readonly": false,
+            "hint": "",
+            "name": "demo_data",
+            "attributes": {},
+            "choice": 0,
+            "value": "",
+            "max_length": 8000,
+            "ed": {
+                "name": "demo_data"
+            }
+        },
+        "option_schema": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Option schema",
+            "sys_readonly": false,
+            "type": "json",
+            "mandatory": false,
+            "displayValue": "",
+            "readonly": false,
+            "hint": "",
+            "name": "option_schema",
+            "attributes": {},
+            "choice": 0,
+            "value": "",
+            "max_length": 8000,
+            "ed": {
+                "name": "option_schema"
+            }
+        },
+        "script": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Server script",
+            "sys_readonly": false,
+            "type": "script",
+            "mandatory": false,
+            "displayValue": "(function() {\nif (input.tracking_code) {\nvar DHL = new DHL_Utils();\nvar shipmentData = DHL.getShipmentData(input.tracking_code)\nvar shipmentID = DHL.createShipment(shipmentData)\nDHL.createTrackingEvents(shipmentData, shipmentID)\nconsole.log(shipmentData)\n }\ndata.shipments = []\nvar shipment = {}\nshipment.tracking_events = []\nvar trackingEvent = {}\nvar shipmentGR = new GlideRecord('u_shipments');\nvar trackingEventGR = new GlideRecord('u_dhl_tracking_events')\nshipmentGR.addQuery('sys_created_by', gs.getUserName())\t\nshipmentGR.query();\nwhile (shipmentGR.next()) {\n\t$sp.getRecordDisplayValues(shipment, shipmentGR, 'u_id, u_origin, u_destination, u_status_code')\n\ttrackingEventGR.addQuery('u_shipment', shipmentGR.getUniqueValue())\n\ttrackingEventGR.query();\n\twhile (trackingEventGR.next()) {\n\t\t$sp.getRecordDisplayValues(trackingEvent, trackingEventGR, 'u_status, u_status_code, u_timestamp, u_location')\n\t\tshipment.tracking_events.push(trackingEvent)\n\t}\n\t\tdata.shipments.push(shipment);\n}\nconsole.log(data.shipments)\n\n\t\n\n})();",
+            "readonly": false,
+            "hint": "",
+            "name": "script",
+            "attributes": {},
+            "choice": 0,
+            "value": "(function() {\nif (input.tracking_code) {\nvar DHL = new DHL_Utils();\nvar shipmentData = DHL.getShipmentData(input.tracking_code)\nvar shipmentID = DHL.createShipment(shipmentData)\nDHL.createTrackingEvents(shipmentData, shipmentID)\nconsole.log(shipmentData)\n }\ndata.shipments = []\nvar shipment = {}\nshipment.tracking_events = []\nvar shipmentGR = new GlideRecord('u_shipments');\nvar trackingEventGR = new GlideRecord('u_dhl_tracking_events')\nshipmentGR.addQuery('sys_created_by', gs.getUserName())\t\nshipmentGR.query();\nwhile (shipmentGR.next()) {\n\t$sp.getRecordDisplayValues(shipment, shipmentGR, 'u_id, u_origin, u_destination, u_status_code')\n\ttrackingEventGR.addQuery('u_shipment', shipmentGR.getUniqueValue())\n\ttrackingEventGR.query();\n\twhile (trackingEventGR.next()) {\n\t\tvar trackingEvent = {}\n\t\t$sp.getRecordDisplayValues(trackingEvent, trackingEventGR, 'u_status, u_status_code, u_timestamp, u_location')\n\t\tshipment.tracking_events.push(trackingEvent)\n\t}\n\t\tdata.shipments.push(shipment);\n}\nconsole.log(data.shipments)\n\n\t\n\n})();",
+            "max_length": 65000,
+            "ed": {
+                "name": "script"
+            }
+        },
+        "has_preview": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -7,
+            "label": "Has preview",
+            "sys_readonly": false,
+            "type": "boolean",
+            "mandatory": false,
+            "displayValue": "true",
+            "readonly": false,
+            "hint": "Defines whether preview data is available",
+            "name": "has_preview",
+            "attributes": {},
+            "choice": 0,
+            "value": "true",
+            "max_length": 40,
+            "ed": {
+                "name": "has_preview"
+            }
+        },
+        "public": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -7,
+            "label": "Public",
+            "sys_readonly": false,
+            "type": "boolean",
+            "mandatory": false,
+            "displayValue": "false",
+            "readonly": false,
+            "hint": "Widget publicly available to unauthenticated users",
+            "name": "public",
+            "attributes": {
+                "update_exempt": "true"
+            },
+            "choice": 0,
+            "value": "false",
+            "max_length": 40,
+            "ed": {
+                "name": "public"
+            }
+        },
+        "docs": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": 12,
+            "label": "Docs",
+            "sys_readonly": false,
+            "type": "reference",
+            "mandatory": false,
+            "refTable": "sp_documentation",
+            "reference_type": "table",
+            "displayValue": "",
+            "readonly": false,
+            "hint": "",
+            "name": "docs",
+            "attributes": {
+                "encode_utf8": "false"
+            },
+            "reference_key": "sys_id",
+            "readonlyClickthrough": false,
+            "choice": 0,
+            "value": "",
+            "max_length": 32,
+            "ed": {
+                "reference": "sp_documentation",
+                "searchField": "title",
+                "defaultOperator": "STARTSWITH",
+                "name": "docs"
+            }
+        },
+        "client_script": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Client controller",
+            "sys_readonly": false,
+            "type": "script",
+            "mandatory": false,
+            "displayValue": "function($scope) {\n  /* widget controller */\n  var c = this;\n\tc.submitCode = function () {\n\t\tc.server.update()\n\t}\n\t\n}",
+            "readonly": false,
+            "hint": "",
+            "name": "client_script",
+            "attributes": {
+                "client_script": "true"
+            },
+            "choice": 0,
+            "value": "function($scope) {\n  /* widget controller */\n  var c = this;\n\tc.submitCode = function () {\n\t\tc.server.update()\n\t}\n\t\n}",
+            "max_length": 8000,
+            "ed": {
+                "name": "client_script"
+            }
+        },
+        "data_table": {
+            "sys_mandatory": true,
+            "visible": true,
+            "dbType": 12,
+            "default_value": "sp_instance",
+            "label": "Data table",
+            "sys_readonly": false,
+            "type": "table_name",
+            "mandatory": true,
+            "displayValue": "sp_instance",
+            "readonly": false,
+            "hint": "",
+            "name": "data_table",
+            "attributes": {
+                "base_table": "sp_instance",
+                "base_start": "true"
+            },
+            "choice": 0,
+            "choices": [],
+            "value": "sp_instance",
+            "max_length": 80,
+            "ed": {
+                "name": "data_table"
+            }
+        },
+        "name": {
+            "sys_mandatory": true,
+            "visible": true,
+            "dbType": 12,
+            "label": "Name",
+            "sys_readonly": false,
+            "type": "translated_field",
+            "mandatory": true,
+            "displayValue": "DHL Tracker",
+            "readonly": false,
+            "hint": "",
+            "name": "name",
+            "attributes": {},
+            "choice": 0,
+            "value": "DHL Tracker",
+            "max_length": 40,
+            "ed": {
+                "name": "name"
+            }
+        },
+        "sys_scope": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": 12,
+            "label": "Application",
+            "sys_readonly": true,
+            "type": "reference",
+            "mandatory": false,
+            "refTable": "sys_scope",
+            "reference_type": "table",
+            "displayValue": "Global",
+            "readonly": true,
+            "hint": "Application containing this record",
+            "name": "sys_scope",
+            "attributes": {
+                "list_force_default": "true",
+                "readonly_clickthrough": "true",
+                "ignore_filter_on_new": "true"
+            },
+            "reference_key": "sys_id",
+            "readonlyClickthrough": true,
+            "choice": 0,
+            "value": "global",
+            "max_length": 32,
+            "ed": {
+                "reference": "sys_scope",
+                "searchField": "name",
+                "defaultOperator": "STARTSWITH",
+                "name": "sys_scope"
+            }
+        },
+        "id": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": 12,
+            "label": "ID",
+            "sys_readonly": false,
+            "type": "string",
+            "mandatory": false,
+            "displayValue": "dhl_tracker",
+            "readonly": false,
+            "hint": "Identifier for $sp.embedWidget()",
+            "name": "id",
+            "attributes": {
+                "edge_encryption_enabled": "true"
+            },
+            "choice": 0,
+            "value": "dhl_tracker",
+            "max_length": 40,
+            "ed": {
+                "name": "id"
+            }
+        },
+        "field_list": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dependentField": "data_table",
+            "dbType": -1,
+            "label": "Fields",
+            "sys_readonly": false,
+            "type": "field_list",
+            "mandatory": false,
+            "displayValue": "",
+            "readonly": false,
+            "hint": "",
+            "name": "field_list",
+            "attributes": {
+                "is_multi_text": "false"
+            },
+            "choice": 0,
+            "value": "",
+            "max_length": 1000,
+            "ed": {
+                "dependent_value": "sp_instance",
+                "name": "field_list"
+            }
+        },
+        "controller_as": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": 12,
+            "label": "controllerAs",
+            "sys_readonly": false,
+            "type": "string",
+            "mandatory": false,
+            "displayValue": "c",
+            "readonly": false,
+            "hint": "Identifier name for a reference to the controller in the directive's scope",
+            "name": "controller_as",
+            "attributes": {
+                "edge_encryption_enabled": "true"
+            },
+            "choice": 0,
+            "value": "c",
+            "max_length": 100,
+            "ed": {
+                "name": "controller_as"
+            }
+        }
+    }
+}

@@ -1,30 +1,21 @@
-export const displayVote = (anecdote) => {
-    return {
-        type: 'VOTED',
-        content: anecdote
+export const setNotification = (message, timeout) => {
+    return async dispatch => {
+        dispatch(
+            {type: 'SET',
+        content: message}
+        )
+        setTimeout(() => {
+            dispatch({type: 'CLEAR', content: ''})
+            
+            }, timeout)
     }
-}
+} 
 
-export const displayCreated = (anecdote) => {
-    return {
-        type: 'CREATED',
-        content: anecdote
-    }
-}
 
-export const clearMessage = () => {
-    return  {
-        type: 'CLEAR',
-        content: ''
-    }
-}
-
-const notificationReducer = (state = "", action) => {
+const notificationReducer = (state = '', action) => {
     switch(action.type) {
-        case('VOTED'):
-            return `You voted '${action.content}'`
-         case('CREATED'):
-            return `You created new anecdote: '${action.content}'`
+        case('SET'):
+            return action.content
         case('CLEAR'):
            return action.content
             
